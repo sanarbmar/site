@@ -7,4 +7,57 @@
   width: 1080px;
 }
 
+.margin0{
+  overflow: hidden;
+}
 
+footer{
+  padding-top: 3.5rem;
+}
+
+section {
+	max-width: 720px;
+	margin: auto;
+	padding: 2em;
+}
+
+.container2{
+  width: 300px;
+  margin: 30px auto;
+}
+.line{
+  padding: 5px 0 5px 30px;
+  border-left: 3px solid #5ACFD6;
+}
+.parrafo{
+  text-align: center;
+  width:250px;
+  padding: 10px;
+  border:1px solid #5ACFD6;
+  color: #03254a;
+  margin: 20px 0;
+  position: relative;
+}
+.parrafo:before{
+  content: '';
+  position: absolute;
+  left: -40px;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border: 3px solid #D2FAFB;
+  border-radius: 50%;
+  background-color: #5ACFD6;
+}
+.parrafo:after{
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 7px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-left: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 10px solid #5ACFD6;
+}
