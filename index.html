@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Home</title>
     <meta charset="utf-8">
@@ -8,209 +9,213 @@
     <meta name="description" content="Your description">
     <meta name="keywords" content="Your keywords">
     <meta name="author" content="Your name">
-    <link rel="stylesheet" href="css/bootstrap.css" >
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/camera.css">
-	<link rel="stylesheet" href="css/calendar.css" />
-	<link rel="stylesheet" href="css/custom_2.css" />
+    <link rel="stylesheet" href="css/calendar.css" />
+    <link rel="stylesheet" href="css/custom_2.css" />
     <link rel="stylesheet" href="css/jquery.fancybox.css">
     <link rel="stylesheet" href="./css/index.css">
-    
-	<script src="js/jquery.js"></script>
+
+    <script src="js/jquery.js"></script>
     <script src="js/jquery-migrate-1.1.1.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
     <script src="js/superfish.js"></script>
     <script src="js/jquery.mobilemenu.js"></script>
-    <script  src="js/jquery.ui.totop.js"></script>
+    <script src="js/jquery.ui.totop.js"></script>
 
 
-	<script src="js/modernizr.custom.63321.js"></script>
-	<script src="js/jquery.calendario.js"></script>
-	<script src="js/data.js"></script>
+    <script src="js/modernizr.custom.63321.js"></script>
+    <script src="js/jquery.calendario.js"></script>
+    <script src="js/data.js"></script>
 
     <script src="js/jquery.equalheights.js"></script>
     <script src="js/jquery.fancybox.pack.js"></script>
-    
-    
+
+
     <script src='js/camera.js'></script>
     <!--[if (gt IE 9)|!(IE)]><!-->
-        <script src="js/jquery.mobile.customized.min.js"></script>
+    <script src="js/jquery.mobile.customized.min.js"></script>
     <!--<![endif]-->
 
     <script>
-        $(window).load(function() {
-            $(function() {$("a.various").fancybox();});
+        $(window).load(function () {
+            $(function () { $("a.various").fancybox(); });
         });
-    </script> 
+    </script>
 
-     <script>	
-        $(window).load( function(){	
-            
- 	      jQuery('.camera_wrap').camera();	 
-             
+    <script>
+        $(window).load(function () {
+
+            jQuery('.camera_wrap').camera();
+
         });
-     </script>
-<script type="text/javascript">	
-			$(function() {
-			
-				var transEndEventNames = {
-						'WebkitTransition' : 'webkitTransitionEnd',
-						'MozTransition' : 'transitionend',
-						'OTransition' : 'oTransitionEnd',
-						'msTransition' : 'MSTransitionEnd',
-						'transition' : 'transitionend'
-					},
-					transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
-					$wrapper = $( '#custom-inner' ),
-					$calendar = $( '#calendar' ),
-					cal = $calendar.calendario( {
-						onDayClick : function( $el, $contentEl, dateProperties ) {
+    </script>
+    <script type="text/javascript">
+        $(function () {
 
-							if( $contentEl.length > 0 ) {
-								showEvents( $contentEl, dateProperties );
-							}
+            var transEndEventNames = {
+                'WebkitTransition': 'webkitTransitionEnd',
+                'MozTransition': 'transitionend',
+                'OTransition': 'oTransitionEnd',
+                'msTransition': 'MSTransitionEnd',
+                'transition': 'transitionend'
+            },
+                transEndEventName = transEndEventNames[Modernizr.prefixed('transition')],
+                $wrapper = $('#custom-inner'),
+                $calendar = $('#calendar'),
+                cal = $calendar.calendario({
+                    onDayClick: function ($el, $contentEl, dateProperties) {
 
-						},
-						caldata : codropsEvents,
-						displayWeekAbbr : true
-					} ),
-					$month = $( '#custom-month' ).html( cal.getMonthName() ),
-					$year = $( '#custom-year' ).html( cal.getYear() );
+                        if ($contentEl.length > 0) {
+                            showEvents($contentEl, dateProperties);
+                        }
+
+                    },
+                    caldata: codropsEvents,
+                    displayWeekAbbr: true
+                }),
+                $month = $('#custom-month').html(cal.getMonthName()),
+                $year = $('#custom-year').html(cal.getYear());
 
 
-				function updateMonthYear() {				
-					$month.html( cal.getMonthName() );
-					$year.html( cal.getYear() );
-				}
+            function updateMonthYear() {
+                $month.html(cal.getMonthName());
+                $year.html(cal.getYear());
+            }
 
-				// just an example..
-				function showEvents( $contentEl, dateProperties ) {
+            // just an example..
+            function showEvents($contentEl, dateProperties) {
 
-					hideEvents();
-					
-					var $events = $( '<div id="custom-content-reveal" class="custom-content-reveal"><h4>Events for ' + dateProperties.monthname + ' ' + dateProperties.day + ', ' + dateProperties.year + '</h4></div>' ),
-						$close = $( '<span class="custom-content-close"></span>' ).on( 'click', hideEvents );
+                hideEvents();
 
-					$events.append( $contentEl.html() , $close ).insertAfter( $wrapper );
-					
-					setTimeout( function() {
-						$events.css( 'top', '0%' );
-					}, 25 );
+                var $events = $('<div id="custom-content-reveal" class="custom-content-reveal"><h4>Events for ' + dateProperties.monthname + ' ' + dateProperties.day + ', ' + dateProperties.year + '</h4></div>'),
+                    $close = $('<span class="custom-content-close"></span>').on('click', hideEvents);
 
-				}
-				function hideEvents() {
+                $events.append($contentEl.html(), $close).insertAfter($wrapper);
 
-					var $events = $( '#custom-content-reveal' );
-					if( $events.length > 0 ) {
-						
-						$events.css( 'top', '100%' );
-						Modernizr.csstransitions ? $events.on( transEndEventName, function() { $( this ).remove(); } ) : $events.remove();
+                setTimeout(function () {
+                    $events.css('top', '0%');
+                }, 25);
 
-					}
+            }
+            function hideEvents() {
 
-				}
-			
-			});
-		</script>
-    
-    
-	<!--[if lt IE 8]>
+                var $events = $('#custom-content-reveal');
+                if ($events.length > 0) {
+
+                    $events.css('top', '100%');
+                    Modernizr.csstransitions ? $events.on(transEndEventName, function () { $(this).remove(); }) : $events.remove();
+
+                }
+
+            }
+
+        });
+    </script>
+
+
+    <!--[if lt IE 8]>
   		<div style='text-align:center'><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/img/upgrade.jpg"border="0"alt=""/></a></div>  
  	<![endif]-->
-  <!--[if lt IE 9]>
+    <!--[if lt IE 9]>
     <link rel="stylesheet" href="css/ie.css" type="text/css" media="screen">
     <script src="assets/js/html5shiv.js"></script>
   <![endif]-->
 </head>
 
 <body>
-<!--==============================header=================================-->
-<header>
-<div class="headtop"></div>
-<div class="bghead2"></div>
-    <div class="container">
-        <h1 class="brand brand_"><a href="index.html"><img alt="i love cats" src="img/222.png"></a></h1>       
-        <div class="navbar navbar_ clearfix extra">
-          <div class="nav-collapse nav-collapse_  collapse">
-            <ul class="nav sf-menu">
-              <li class="active"><a class="margin1" href="index.html">home</a><span class="bgcloud"></span></li>
-             
-              <li><a class="margin4" href="index-3.html">blog</a><span class="bgcloud"></span></li>
-              
-            </ul>
-          </div>
-        </div> 
-    </div>
-    <div class="row_1">
+    <!--==============================header=================================-->
+    <header class="contpages2">
+        <div class="headtop"></div>
+        <div class="bghead2"></div>
         <div class="container">
-            <div class="row">
-                <div class="span8">
-                <!--============================== slider =================================-->
-                    <div class="slider">
-                        <div class="camera_wrap">
-                          <div data-src="img/picture1.png">
-                          </div>
-                          <div data-src="img/picture2.png">
-                          </div>
-                          <div data-src="img/picture3.png">
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            
-                <div class="span4">
-                    <p class="title1">Bienvenido<img src="img/butterfly1.png" alt=""></p> 
-                    <p class="title1 m_bot1">A nuestro blog de padres!</p>
-                    <p class="title2"><strong>Aqui</strong> encontraras</p>
-                    <p class="title2 m_bot2">tips sobre el cuidado y crianza de los niños</p>
+            <h1 class="brand brand_"><a href="index.html"><img alt="i love cats" src="img/222.png"></a></h1>
+            <div class="navbar navbar_ clearfix extra">
+                <div class="nav-collapse nav-collapse_  collapse">
+                    <ul class="nav sf-menu">
+                        <li class="active"><a class="margin1" href="index.html">home</a><span class="bgcloud"></span>
+                        </li>
+
+                        <li><a class="margin4" href="index-3.html">blog</a><span class="bgcloud"></span></li>
+
+                    </ul>
                 </div>
             </div>
-        </div> 
-    </div>   
-</header> 
-<!--==============================content=================================-->
-<div id="content">
-    <!--============row-2==========-->
-    
-    <!--============row-3==========-->
-    <div class="row_3">
-        <div class="bgcolor1">
+        </div>
+        <div class="row_1">
             <div class="container">
                 <div class="row">
-                    
-                    
-                    <div class="span3 center">
-                        <h2 class="redcolor pad_top1">Publicaciones Recientes:</h2>
-                        <ul class="list1 clearfix">
-                            <li><a href="index-3.html">Protección integral del niño</a></li>
-                            <li><a href="index-3.html">Aspectos Claves del Buen Trato En El Niño</a></li>
-                            <li><a href="index-3.html">Linea del tiempo sobre la negligencia</a></li>
-                            <li><a href="index-3.html">Carrusel del buen trato</a></li>
-                        </ul>
+                    <div class="span8">
+                        <!--============================== slider =================================-->
+                        <div class="slider">
+                            <div class="camera_wrap">
+                                <div data-src="img/picture1.png">
+                                </div>
+                                <div data-src="img/picture2.png">
+                                </div>
+                                <div data-src="img/picture3.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="span4">
+                        <p class="title1">Bienvenido<img src="img/butterfly1.png" alt=""></p>
+                        <p class="title1 m_bot1">A nuestro blog de padres!</p>
+                        <p class="title2"><strong>Aqui</strong> encontraras</p>
+                        <p class="title2 m_bot2">tips sobre el cuidado y crianza de los niños</p>
                     </div>
                 </div>
-            </div> 
-         </div>
-     </div>
-</div>
-<!--==============================footer=================================-->
-<footer>
-    <div class="row_4">
-        <div class="bgcolorfooter">
-            <div class="container">
-                <div class="row">    
-                    <div class="span12">
-                        <div class="">
-                            <a href="index.html"><img class="smallogo" alt="Simpatico" src="img/222.png"></a>
-                            <div class="privacytxt"><span class="txt-1">&copy; 2024 </span><a class="txt-1" href="index-5.html">Privacy policy</a>&nbsp;<!-- {%FOOTER_LINK} --></div>
+            </div>
+        </div>
+    </header>
+    <!--==============================content=================================-->
+    <div id="content">
+        <!--============row-2==========-->
+
+        <!--============row-3==========-->
+        <div class="row_3">
+            <div class="bgcolor1">
+                <div class="container">
+                    <div class="row">
+
+
+                        <div class="span3 center">
+                            <h2 class="redcolor pad_top1">Publicaciones Recientes:</h2>
+                            <ul class="list1 clearfix">
+                                <li><a href="index-3.html">Protección integral del niño</a></li>
+                                <li><a href="index-3.html">Aspectos Claves del Buen Trato <br> En El Niño</a></li>
+                                <li><a href="index-3.html">Linea del tiempo sobre la negligencia</a></li>
+                                <li><a href="index-3.html">Carrusel del buen trato</a></li>
+                                <li><a href="index-3.html">La disciplina positiva</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</footer>
-<script src="js/bootstrap.js"></script>
+    <!--==============================footer=================================-->
+    <footer>
+        <div class="row_4">
+            <div class="bgcolorfooter">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12">
+                            <div class="">
+                                <a href="index.html"><img class="smallogo" alt="Simpatico" src="img/222.png"></a>
+                                <div class="privacytxt"><span class="txt-1">&copy; 2024 </span><a class="txt-1"
+                                        href="index-5.html">Privacy policy</a>&nbsp;<!-- {%FOOTER_LINK} --></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/bootstrap.js"></script>
 </body>
+
 </html>

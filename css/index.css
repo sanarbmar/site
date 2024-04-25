@@ -69,4 +69,5 @@ ol{
 ol h2 li a{
   text-decoration: none;
   color: white;
+  line-height: 2.5rem;
 }
