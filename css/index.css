@@ -61,3 +61,12 @@ section {
   border-bottom: 8px solid transparent;
   border-right: 10px solid #5ACFD6;
 }
+
+ol{
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+ol h2 li a{
+  text-decoration: none;
+  color: white;
+}
